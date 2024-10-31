@@ -11,7 +11,6 @@ import "./Header.css";
 import MobileNavigation from "../../MobileNavigation/MobileNavigation";
 import BottomNavigation from "../BottomNavigation/BottomNavigation";
 import Phone from "../../../images/HeaderImages/Phone.svg";
-import Burger from "../../../images/HeaderImages/Burger.svg";
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isBurgerX, setIsBurgerX] = useState(false);
