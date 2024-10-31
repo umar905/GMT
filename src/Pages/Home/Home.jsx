@@ -6,6 +6,7 @@ import SecondSlider from '../../Components/SecondSlider/SecondSlider'
 import CategoriesSlider from '../../Components/CategoriesSlider/CategoriesSlider'
 import BrendsSlider from '../../Components/BrendsSlider/BrendsSlider'
 import AccordionSection from '../../Components/AccordionSection/AccordionSection'
+import Mapsection from '../../Components/Mapsection/Mapsection'
 const Home = () => {
   return (
     <>
@@ -16,6 +17,7 @@ const Home = () => {
         <CategoriesSlider/>
         <BrendsSlider/>
         <AccordionSection/>
+        <Mapsection/>
     </>
   )
 }
