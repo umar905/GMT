@@ -10,7 +10,7 @@
     padding: 10px 0;
     justify-content: center;
     width: 100%;
-    z-index: 99;
+    z-index: 999;
     .links_p2 {
         font-family: Manrope;
         font-size: 12px;

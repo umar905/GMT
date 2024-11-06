@@ -11,7 +11,14 @@ import "./Header.css";
 import MobileNavigation from "../../MobileNavigation/MobileNavigation";
 import BottomNavigation from "../BottomNavigation/BottomNavigation";
 import Phone from "../../../images/HeaderImages/Phone.svg";
+import Drawer from "react-modern-drawer";
+import "react-modern-drawer/dist/index.css";
 const Header = () => {
+  const [isOpencontact, setIsOpencontact] = React.useState(false)
+  const toggleDrawercontact = () => {
+    setIsOpencontact((prevState) => !prevState)
+  }
+
   const [isOpen, setIsOpen] = useState(false);
   const [isBurgerX, setIsBurgerX] = useState(false);
 
@@ -32,6 +39,10 @@ const Header = () => {
     toggleBurger();
   };
 
+  const [isOpenn, setIsOpenn] = React.useState(false);
+  const toggleDrawer = () => {
+    setIsOpenn((prevState) => !prevState);
+  };
   return (
     <>
       <header>
@@ -109,34 +120,75 @@ const Header = () => {
           <div className="left-right-adress">
             <b>+7(495)000-00-00</b>
             <b>info@mail.ru</b>
-            <p className="gray">
-            г. Москва, ул. Московская, д. 35
-            </p>
+            <p className="gray">г. Москва, ул. Московская, д. 35</p>
           </div>
 
           <div className="left-right-adress">
-           <p>Пн-Пт с 09:00-19:00 <br />
-           Сб-Вс - выходной</p>
+            <p>
+              Пн-Пт с 09:00-19:00 <br />
+              Сб-Вс - выходной
+            </p>
           </div>
         </div>
         <ul className="header__inner">
-          <a onClick={toggleCloseMenu} href="/">
-          Каталог товаров
-          </a>
-          <a onClick={toggleCloseMenu} href="/shop">
-          Информация
+          <a onClick={toggleDrawer}>Информация</a>
+          <a onClick={toggleDrawercontact} href="#">
+            Контакты
           </a>
           <a onClick={toggleCloseMenu} href="#">
-          Контакты
+            О нас
           </a>
           <a onClick={toggleCloseMenu} href="#">
-          О нас
-          </a>
-          <a onClick={toggleCloseMenu} href="#">
-          Сравнение
+            Сравнение
           </a>
         </ul>
       </div>
+
+      <Drawer
+        open={isOpenn}
+        onClose={toggleDrawer}
+        direction="right"
+        className="bla bla bla"
+      >
+        <div className="container">
+          <div className="drawer_info">
+            <img src="./img/backto.svg" alt="" onClick={toggleDrawer}/>
+            <h2>Информация</h2>
+            <img src="./img/cross.svg" alt="" onClick={toggleDrawer}/>
+          </div>
+          <ul className="header__inner">
+            <a href="#">Доставка</a>
+            <a href="#">Оплата</a>
+            <a href="#">Акции</a>
+            <a href="#">Гарантии</a>
+            <a href="#">Производители</a>
+            <a href="#">Блог</a>
+            <a href="#">Услуги</a>
+            <a href="#">Покупателям</a>
+            <a href="#">Сертификаты</a>
+            <a href="#">Партнерские программы</a>
+          </ul>
+        </div>
+      </Drawer>
+      <Drawer
+        open={isOpencontact}
+        onClose={toggleDrawercontact}
+        direction="right"
+        className="bla bla bla"
+      >
+        <div className="container">
+          <div className="drawer_info">
+            <img src="./img/backto.svg" alt="" onClick={toggleDrawercontact}/>
+            <h2>Контакты</h2>
+            <img src="./img/cross.svg" alt="" onClick={toggleDrawercontact}/>
+          </div>
+          <ul className="header__inner">
+            <a href="#">Контакты</a>
+            <a href="#">Отзывы</a>
+            <a href="#">Контакты</a>
+          </ul>
+        </div>
+      </Drawer>
     </>
   );
 };

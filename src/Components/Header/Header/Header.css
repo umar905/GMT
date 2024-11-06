@@ -77,6 +77,34 @@ header {
 }
 
 @media (max-width:426px) {
+    .EZDrawer__container {
+        width: 100% !important;
+        height: 100dvh !important;
+        ul {
+            a {
+                font-family: Manrope;
+                font-size: 14px;
+                font-weight: 500;
+                line-height: 19.12px;
+                text-align: left;
+
+            }
+        }
+    }
+
+    .drawer_info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 14px 15px;
+
+        h2 {
+            font-family: Manrope;
+
+        }
+
+    }
+
     .laptop-mode {
         display: none;
     }
@@ -140,6 +168,7 @@ header {
     padding: 116px 15px;
     transition: all 0.7s cubic-bezier(0.8, 0.5, 0.5, 0.8);
     overflow: visible;
+
     &.active {
         top: 0;
     }
@@ -153,16 +182,19 @@ header {
     display: flex;
     align-items: start;
     justify-content: space-between;
-    border-bottom: 1px solid #7A7687;
-    padding-bottom: 15px;   
-    .left-right-adress{
+    border-bottom: 1px solid #E5E2EE;
+    padding-bottom: 15px;
+
+    .left-right-adress {
         display: flex;
         flex-direction: column;
-        p , b {
+
+        p,
+        b {
             font-family: Manrope;
             font-size: 12px;
             line-height: 16.39px;
-    
+
         }
     }
 
@@ -189,6 +221,7 @@ header {
 
 
 }
-.bottomMobileNav{
+
+.bottomMobileNav {
     z-index: 1000;
 }
