@@ -55,7 +55,7 @@
     font-weight: 600;
     line-height: 19.12px;
     border-radius: 50px;
-    background-color: #088269;
+    background-color: var(--color);
 }
 @media (max-width: 1139px) {
     .bottom-navigation .container{

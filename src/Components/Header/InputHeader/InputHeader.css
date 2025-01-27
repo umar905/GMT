@@ -1,5 +1,6 @@
 .search-container {
     width: 614px;
+    position: relative;
     display: flex;
     align-items: center;
     border: 1px solid #dcdcdc;
@@ -23,7 +24,7 @@
 
 .search-input {
     border: none;
-    /* padding: 10px; */
+    padding: 10px;
     flex-grow: 1;
     outline: none;
     font-size: 14px;
@@ -62,4 +63,55 @@
 }
 .form{
     padding: 0 !important;
+}
+
+.filtered-device-grid {
+    position: absolute;
+    background: #fff;
+    overflow-y: auto;
+    max-height: 400px;
+    width: 100%;
+    max-width: 614px;
+    top: 50px;
+    left: 0;
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    padding: 10px;
+}
+
+.filtered-device-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+    border: 1px solid #f0f0f0;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.filtered-device-card img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.filtered-device-card h3 {
+    font-size: 16px;
+    color: #333;
+    margin: 0;
+}
+
+.filtered-device-card:hover {
+    background-color: #f9f9f9;
+    transform: scale(1.02);
+    border-color: #ddd;
+}
+
+.no-results {
+    color: #999;
+    text-align: center;
 }

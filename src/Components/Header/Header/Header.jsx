@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import TopHeader from "../TopHeader/TopHeader";
-import Logo from "../../../images/HeaderImages/Logo.svg";
+import Logo from "../../../images/HeaderImages/logo.png";
 import { Link } from "react-router-dom";
 import InputHeader from "../InputHeader/InputHeader";
 import Login from "../../../images/HeaderImages/Login.svg";
@@ -13,11 +13,14 @@ import BottomNavigation from "../BottomNavigation/BottomNavigation";
 import Phone from "../../../images/HeaderImages/Phone.svg";
 import Drawer from "react-modern-drawer";
 import "react-modern-drawer/dist/index.css";
+import { useCart } from "react-use-cart";
 const Header = () => {
   const [isOpencontact, setIsOpencontact] = React.useState(false)
   const toggleDrawercontact = () => {
     setIsOpencontact((prevState) => !prevState)
   }
+
+  const { totalItems } = useCart();
 
   const [isOpen, setIsOpen] = useState(false);
   const [isBurgerX, setIsBurgerX] = useState(false);
@@ -50,12 +53,12 @@ const Header = () => {
         <div className="container bottom-header">
           <div className="bottomHeader">
             <Link to={"/"} className="laptop-mode">
-              <img src={Logo} alt="" />
+              <img src={Logo} alt="" width={"200px"} />
             </Link>
             <div className="mobileHeader">
               <div className="logo-mobile">
                 <Link to={"/"}>
-                  <img src={Logo} alt="" />
+                  <img src={Logo} alt=""width={"200px"} />
                 </Link>
               </div>
               <div className="burger">
@@ -84,27 +87,17 @@ const Header = () => {
             </div>
             <InputHeader />
             <p className="adress">
-              Пн-Пт с 09:00-19:00 <br />
-              Сб-Вс - выходной
+            +998-99-862-21-22
             </p>
           </div>
           <div className="links">
-            <Link>
-              <img src={Login} alt="" />
-              <p className="links_p">Войти</p>
-            </Link>
-            <Link>
-              <img src={Like} alt="" />
-              <p className="links_p">Избранное</p>
-            </Link>
-            <Link>
-              <img src={Comparsion} alt="" />
-              <p className="links_p">Сравнить</p>
-            </Link>
-            <Link>
+         
+            <Link to={'/cart'}>
               <img src={Korzinka} alt="" />
+              <sub>{totalItems}</sub>
               <p className="links_p">Корзина</p>
             </Link>
+           
           </div>
         </div>
       </header>
@@ -112,10 +105,10 @@ const Header = () => {
         <MobileNavigation />
       </div>
       <div className="bottomNavigation">
-        <BottomNavigation />
+        {/* <BottomNavigation /> */}
       </div>
 
-      <div className={isOpen ? "header__menu active" : "header__menu"}>
+      <div className={isOpen ? "header__menu active" : "header__menu"} >
         <div className="adressMobile">
           <div className="left-right-adress">
             <b>+7(495)000-00-00</b>
@@ -131,20 +124,16 @@ const Header = () => {
           </div>
         </div>
         <ul className="header__inner">
-          <a onClick={toggleDrawer}>Информация</a>
-          <a onClick={toggleDrawercontact} href="#">
+          <a  href="/contact">
             Контакты
           </a>
-          <a onClick={toggleCloseMenu} href="#">
+          <a onClick={toggleCloseMenu} href="/about">
             О нас
-          </a>
-          <a onClick={toggleCloseMenu} href="#">
-            Сравнение
           </a>
         </ul>
       </div>
 
-      <Drawer
+      {/* <Drawer
         open={isOpenn}
         onClose={toggleDrawer}
         direction="right"
@@ -157,38 +146,13 @@ const Header = () => {
             <img src="./img/cross.svg" alt="" onClick={toggleDrawer}/>
           </div>
           <ul className="header__inner">
-            <a href="#">Доставка</a>
-            <a href="#">Оплата</a>
+            <a href="/about">Оплата</a>
             <a href="#">Акции</a>
-            <a href="#">Гарантии</a>
-            <a href="#">Производители</a>
-            <a href="#">Блог</a>
-            <a href="#">Услуги</a>
-            <a href="#">Покупателям</a>
-            <a href="#">Сертификаты</a>
-            <a href="#">Партнерские программы</a>
+      
           </ul>
         </div>
-      </Drawer>
-      <Drawer
-        open={isOpencontact}
-        onClose={toggleDrawercontact}
-        direction="right"
-        className="bla bla bla"
-      >
-        <div className="container">
-          <div className="drawer_info">
-            <img src="./img/backto.svg" alt="" onClick={toggleDrawercontact}/>
-            <h2>Контакты</h2>
-            <img src="./img/cross.svg" alt="" onClick={toggleDrawercontact}/>
-          </div>
-          <ul className="header__inner">
-            <a href="#">Контакты</a>
-            <a href="#">Отзывы</a>
-            <a href="#">Контакты</a>
-          </ul>
-        </div>
-      </Drawer>
+      </Drawer> */}
+     
     </>
   );
 };

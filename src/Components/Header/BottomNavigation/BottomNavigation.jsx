@@ -14,7 +14,7 @@ const BottomNavigation = () => {
           <Link>Услуги</Link>
           <Link>Акции</Link>
           <Link>Покупателям</Link>
-          <Link>Контакты</Link>
+          <Link to={"/contact"}>Контакты</Link>
         </ul>
         <ul className="catalog-list-right">
             <Link className="Location-bottom">Москва <img src={Location} alt="" /></Link>

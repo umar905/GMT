@@ -1,5 +1,5 @@
 .accordion{
-    background: #088269;
+    background: var(--color);
     padding-top: 120px;
     padding-bottom: 120px;
     color: #fff;

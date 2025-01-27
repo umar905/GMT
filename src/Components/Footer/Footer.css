@@ -1,12 +1,10 @@
 footer {
-    background: #088269;
+    background: var(--color);
     color: #F8F7F3;
     padding: 40px 0;
 }
 
 .navigationfooter {
-    display: flex;
-    flex-direction: column;
     gap: 15px;
 
     h2 {
@@ -20,23 +18,21 @@ footer {
 }
 
 .footer_wrapper {
-    display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
     .footnav {
         display: flex;
         flex-wrap: wrap;
         gap: 60px;
-        border-top: 1px solid #ffff;
 
         ul {
             padding-top: 15px;
             display: flex;
-            flex-direction: column;
-            flex-wrap: wrap;
+            /* flex-wrap: wrap; */
+            justify-content: space-between;
             gap: 8px;
 
-            li {
+            a {
+                color: #F8F7F3;
                 cursor: pointer;
                 font-family: Manrope;
                 font-size: 14px;

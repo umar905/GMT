@@ -50,9 +50,9 @@ line-height: 52.8px;
         background: none;
         border-radius: 50px;
         border: 1px solid #D5D1E1;
-        color: #088269;
+        color: var(--color);
         &:nth-child(1){
-            background: #088269 !important;
+            background: var(--color) !important;
             color: #fff;
             border: none;
         }

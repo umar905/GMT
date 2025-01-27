@@ -1,101 +1,68 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios"; // Added axios import
 import "./InputHeader.css";
 import SearchImage from "../../../images/HeaderImages/search.png";
-import { useTheme } from "@mui/material/styles";
-import OutlinedInput from "@mui/material/OutlinedInput";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
+import { Link } from "react-router-dom";
+
 const InputHeader = () => {
-  const ITEM_HEIGHT = 0;
-  const ITEM_PADDING_TOP = 8;
+  const [search, setSearch] = useState("");
+  const [data, setData] = useState([]);
 
-  const MenuProps = {
-    PaperProps: {
-      style: {
-       
-      },
-    },
+  const handleSearchChange = (event) => {
+    setSearch(event.target.value);
   };
-  const names = [
-    "Реанимация",
-    "Хирургия",
-    "Офтальмология",
-    "Лабораторная диагностика",
-    "Акушерство",
-    "Гинекология",
-    "Гистология",
-    "Косметология",
-    "Оториноларингология",
-    "Рентгенология и томография",
-    "Стерилизация",
-    "Физиотерапия и реабилитация",
-    "Функциональная диагностика",
-    "Новинки",
-    "Распродажи",
-    "Кабинеты под ключ",
-  ];
 
-  function getStyles(name, personName, theme) {
-    return {
-      fontWeight: personName.includes(name)
-        ? theme.typography.fontWeightMedium
-        : theme.typography.fontWeightRegular,
-    };
-  }
+  const filteredDevices =
+    search.trim() === ""
+      ? []
+      : data.filter((device) =>
+          device.name.toLowerCase().includes(search.toLowerCase())
+        );
 
-  const theme = useTheme();
-  const [personName, setPersonName] = React.useState([]);
-
-  const handleChange = (event) => {
-    const {
-      target: { value },
-    } = event;
-    setPersonName(
-      // On autofill we get a stringified value.
-      typeof value === 'string' ? value.split(',') : value,
-    );
+  const getProducts = async () => {
+    try {
+      const response = await axios.get("http://localhost:5000/api/products");
+      setData(response.data);
+    } catch (error) {
+      console.error("Error fetching products:", error.message || error);
+    }
   };
+
+  useEffect(() => {
+    getProducts();
+  }, []);
+
   return (
-    <>
-      <div class="search-container">
-      <FormControl className="form">
-        <Select
-        className="category-select"
-          displayEmpty
-          value={personName}
-          onChange={handleChange}
-          // input={<OutlinedInput />}
-          renderValue={(selected) => {
-            if (selected.length === 0) {
-              return <b>Все категории</b>;
-            }
-
-            return selected.join(', ');
-          }}
-          MenuProps={MenuProps}
-          inputProps={{ 'aria-label': 'Without label' }}
-        >
-          <MenuItem disabled value="">
-            <b>Все категории</b>
-          </MenuItem>
-          {names.map((name) => (
-            <MenuItem
-              key={name}
-              value={name}
-              style={getStyles(name, personName, theme)}
-            >
-              {name}
-            </MenuItem>
+    <div className="search-container">
+      <input
+        type="text"
+        className="search-input"
+        placeholder="Поиск"
+        onChange={handleSearchChange}
+        value={search}
+      />
+ 
+      {filteredDevices.length > 0 ? (
+        <div className="filtered-device-grid">
+          {filteredDevices.map((el) => (
+            <Link to={`/products/${el._id}`} key={el._id} className="filtered-device-card">
+              <img
+                src={el.image}
+                alt={el.name}
+                className="filtered-device-img"
+                onError={(e) => {
+                  e.target.src = "https://via.placeholder.com/150"; // Fallback image
+                }}
+              />
+              <h3>{el.name}</h3>
+            </Link>
           ))}
-        </Select>
-      </FormControl>
-        <input type="text" class="search-input" placeholder="Поиск" />
-        <button class="search-button">
-          <img src={SearchImage} alt="Search" />
-        </button>
-      </div>
-    </>
+        </div>
+      ) : search.trim() !== "" ? (
+        <div className="no-results">
+        </div>
+      ) : null}
+    </div>
   );
 };
 

@@ -45,37 +45,6 @@ const SliderForLaptop = () => {
     <>
         <div className="container">
         <div className="slider-container">
-      <Slider {...settings} className='radiusofslider'>
-        <div className='slidecontainer'>
-         <div className="slideinfo">
-            <h1>Заголовок баннерав пару строк</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p>
-            <div className="sliderbuttons">
-                <button>
-                    Запросить цену
-                </button>
-                <button>
-                    В каталог
-                </button>
-            </div>
-         </div>
-          <img className='banner' src={Banner} alt="" />
-        </div>
-        <div className='slidecontainer'>
-         <div className="slideinfo">
-            <h1>Заголовок баннерав пару строк</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p>
-            <div className="sliderbuttons">
-                <button>
-                    Запросить цену
-                </button>
-                <button>
-                    В каталог
-                </button>
-            </div>
-         </div>
-          <img className='banner' src={Banner} alt="" />
-        </div>
         <div className='slidecontainer'>
          <div className="slideinfo">
             <h1>Заголовок баннерав пару строк</h1>
@@ -92,9 +61,9 @@ const SliderForLaptop = () => {
           <img className='banner' src={Banner} alt="" />
         </div>
        
+       
      
       
-      </Slider>
     </div>
         </div>
     </>

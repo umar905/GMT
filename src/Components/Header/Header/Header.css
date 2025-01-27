@@ -6,6 +6,7 @@ header {
 
         .bottomHeader {
             display: flex;
+            align-items: center;
             gap: 40px;
         }
 
@@ -134,9 +135,11 @@ header {
         }
 
         &.active {
+            
             :nth-child(1) {
                 rotate: 45deg;
                 translate: 0px 4px;
+
             }
 
             :nth-child(2) {
@@ -167,10 +170,11 @@ header {
     flex-direction: column;
     padding: 116px 15px;
     transition: all 0.7s cubic-bezier(0.8, 0.5, 0.5, 0.8);
-    overflow: visible;
+    overflow: hidden;
 
     &.active {
         top: 0;
+        
     }
 
     @media (max-width: 480px) {
@@ -209,7 +213,6 @@ header {
 .header__inner {
     display: flex;
     flex-direction: column;
-
     a {
         font-family: Manrope;
         font-weight: 800;
@@ -218,7 +221,6 @@ header {
         padding: 17px 0;
         border-bottom: 1px solid #7A7687;
     }
-
 
 }
 
